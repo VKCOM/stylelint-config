@@ -11,10 +11,10 @@
 
 ## Использование
 
-В вашем .eslintrc добавьте extends:
+В вашем .stylelintrc.json добавьте extends:
 
 ```js
-// .stylelint.config.js
+// .stylelintrc.json
 
 modules.exports = {
   "extends": ["@vkontakte/stylelint-config"]
