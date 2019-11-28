@@ -15,7 +15,7 @@ module.exports = {
     ],
     'comment-empty-line-before': [
       'always',
-      { except: ['first-nested', 'after-same-name'] },
+      { except: ['first-nested'] },
     ],
     'block-opening-brace-space-before': 'always',
     'declaration-colon-space-after': 'always',
@@ -27,7 +27,7 @@ module.exports = {
     },
     'at-rule-empty-line-before': [
       'always',
-      { ignore: ['after-comment'], except: ['first-nested'] },
+      { ignore: ['after-comment'], except: ['first-nested', 'after-same-name'] },
     ],
 
     'scale-unlimited/declaration-strict-value': [
