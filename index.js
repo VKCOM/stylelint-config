@@ -5,7 +5,6 @@ module.exports = {
   ],
   rules: {
     'indentation': 2,
-    'number-leading-zero': 'never',
     'string-quotes': 'single',
     'selector-max-id': 0,
     'selector-list-comma-newline-after': 'always',
