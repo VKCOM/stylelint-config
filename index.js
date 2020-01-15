@@ -5,7 +5,6 @@ module.exports = {
   ],
   rules: {
     'indentation': 2,
-    'number-leading-zero': 'never',
     'string-quotes': 'single',
     'selector-max-id': 0,
     'selector-list-comma-newline-after': 'always',
@@ -49,7 +48,7 @@ module.exports = {
     'color-named': 'never',
     'function-url-scheme-blacklist': ['/^data:/'],
     'length-zero-no-unit': true,
-    'property-blacklist': [/^\./],
+    'property-blacklist': [/^\./, 'letter-spacing'],
     'declaration-block-semicolon-newline-after': 'always',
     'no-extra-semicolons': true,
     'declaration-block-trailing-semicolon': 'always',
