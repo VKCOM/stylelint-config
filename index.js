@@ -49,7 +49,7 @@ module.exports = {
     'color-named': 'never',
     'function-url-scheme-blacklist': ['/^data:/'],
     'length-zero-no-unit': true,
-    'property-blacklist': [/^\./],
+    'property-blacklist': [/^\./, 'letter-spacing'],
     'declaration-block-semicolon-newline-after': 'always',
     'no-extra-semicolons': true,
     'declaration-block-trailing-semicolon': 'always',
