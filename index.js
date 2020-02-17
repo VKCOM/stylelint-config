@@ -4,6 +4,7 @@ module.exports = {
     'stylelint-selector-bem-pattern',
   ],
   rules: {
+    'max-nesting-depth': [0, { ignoreAtRules: ['supports'] }],
     'indentation': 2,
     'string-quotes': 'single',
     'selector-max-id': 0,
