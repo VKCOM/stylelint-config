@@ -25,6 +25,7 @@ module.exports = {
       '/^border/': ['none'],
       '/^(@|--).+/': ['/^#/', '/^rgb/'],
     },
+    'declaration-block-no-shorthand-property-overrides': true,
     'at-rule-empty-line-before': [
       'always',
       { ignore: ['after-comment'], except: ['first-nested', 'after-same-name'] },
