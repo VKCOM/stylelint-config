@@ -30,20 +30,6 @@ module.exports = {
       'always',
       { ignore: ['after-comment'], except: ['first-nested', 'after-same-name'] },
     ],
-
-    'scale-unlimited/declaration-strict-value': [[
-      'background-image',
-      'background',
-      '/color/',
-      'fill',
-      'stroke',
-    ], {
-      ignoreKeywords: [
-        'currentColor',
-        'transparent',
-        'inherit',
-      ],
-    }],
     'max-empty-lines': 1,
     'declaration-no-important': true,
     'no-duplicate-selectors': true,
