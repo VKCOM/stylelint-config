@@ -37,6 +37,7 @@ module.exports = {
     'function-url-scheme-blacklist': ['/^data:/'],
     'length-zero-no-unit': true,
     'property-blacklist': [/^\./, 'letter-spacing'],
+    'selector-pseudo-class-blacklist': ['root'],
     'declaration-block-semicolon-newline-after': 'always',
     'no-extra-semicolons': true,
     'declaration-block-trailing-semicolon': 'always',
