@@ -21,7 +21,7 @@ module.exports = {
     'declaration-colon-space-after': 'always',
     'declaration-colon-space-before': 'never',
     'declaration-block-single-line-max-declarations': 1,
-    'declaration-property-value-blacklist': {
+    'declaration-property-value-disallowed-list': {
       '/^border/': ['none'],
       '/^(@|--).+/': ['/^#/', '/^rgb/'],
     },
@@ -34,10 +34,10 @@ module.exports = {
     'declaration-no-important': true,
     'no-duplicate-selectors': true,
     'color-named': 'never',
-    'function-url-scheme-blacklist': ['/^data:/'],
+    'function-url-scheme-disallowed-list': ['/^data:/'],
     'length-zero-no-unit': true,
-    'property-blacklist': [/^\./, 'letter-spacing'],
-    'selector-pseudo-class-blacklist': ['root'],
+    'property-disallowed-list': [/^\./, 'letter-spacing'],
+    'selector-pseudo-class-disallowed-list': ['root'],
     'declaration-block-semicolon-newline-after': 'always',
     'no-extra-semicolons': true,
     'declaration-block-trailing-semicolon': 'always',
