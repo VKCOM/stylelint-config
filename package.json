@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "stylelint config from VK",
   "main": "index.js",
+  "engines": {
+    "yarn": ">=1.21.1 <=1.22.18"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
