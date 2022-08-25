@@ -10,9 +10,9 @@
     "strictNullChecks": true,
     "declaration": false,
     "sourceMap": false,
-    "baseUrl": "src",
+    "rootDir": "src",
     "esModuleInterop": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "skipLibCheck": true
   },
   "include": [
