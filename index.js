@@ -15,7 +15,7 @@ module.exports = {
     ],
     'comment-empty-line-before': [
       'always',
-      { except: ['first-nested'] },
+      { ignore: ['stylelint-commands'], except: ['first-nested'] },
     ],
     'block-opening-brace-space-before': 'always',
     'declaration-colon-space-after': 'always',
