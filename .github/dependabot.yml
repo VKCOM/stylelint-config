@@ -8,16 +8,7 @@ updates:
       - dependency-type: "direct"
     reviewers:
       - "VKCOM/vk-sec"
-      - "VKCOM/vkui-core"
-  - package-ecosystem: "npm"
-    directory: "/eslint-plugin-vkui"
-    schedule:
-      interval: "daily"
-    allow:
-      - dependency-type: "direct"
-    reviewers:
-      - "VKCOM/vk-sec"
-      - "VKCOM/vkui-core"
+      - "VKCOM/frontend-core"
   - package-ecosystem: "github-actions"
     # Workflow files stored in the
     # default location of `.github/workflows`
@@ -26,4 +17,4 @@ updates:
       interval: "daily"
     reviewers:
       - "VKCOM/vk-sec"
-      - "VKCOM/vkui-core"
+      - "VKCOM/frontend-core"
