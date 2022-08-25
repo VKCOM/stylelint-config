@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     'stylelint-declaration-strict-value',
-    'stylelint-selector-bem-pattern',
+    './dist/stylelint-selector-bem-pattern',
   ],
   rules: {
     'max-nesting-depth': [0, { ignoreAtRules: ['supports'] }],
