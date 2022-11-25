@@ -2,6 +2,7 @@ module.exports = {
   plugins: [
     'stylelint-declaration-strict-value',
     './dist/stylelint-selector-bem-pattern',
+    './dist/stylelint-vkui',
   ],
   rules: {
     'max-nesting-depth': [0, { ignoreAtRules: ['supports'] }],
@@ -50,5 +51,6 @@ module.exports = {
       'implicitComponents': true,
       'ignoreCustomProperties': /.*/,
     },
+    'plugin/vkui': true,
   },
 };
