@@ -20,11 +20,11 @@ testRule({
   reject: [
     {
       code: `.vkuiClass{margin: 0 calc(var(--some-var) * -1)}`,
-      message: `Don't use \`.vkui*\``,
+      message: `НЕ ЗАВЯЗЫВАЙТЕСЬ НА ВНУТРЕННЮЮ РЕАЛИЗАЦИЮ КОМПОНЕНТОВ, ИНАЧЕ ПОТЕРЯЕТЕ ВОЗМОЖНОСТЬ ОБНОВЛЕНИЯ VKUI!`,
     },
     {
       code: `.class .vkuiClass{margin: 0 calc(var(--some-var) * -1)}`,
-      message: `Don't use \`.vkui*\``,
+      message: `НЕ ЗАВЯЗЫВАЙТЕСЬ НА ВНУТРЕННЮЮ РЕАЛИЗАЦИЮ КОМПОНЕНТОВ, ИНАЧЕ ПОТЕРЯЕТЕ ВОЗМОЖНОСТЬ ОБНОВЛЕНИЯ VKUI!`,
     },
     {
       code: `.class{margin: 0 calc(var(--vkui_internal)*-1)}`,

@@ -13,7 +13,7 @@ const ruleFunction: Rule = () => {
         ruleName,
         node,
         result,
-        message: `Don't use \`.vkui*\``,
+        message: `НЕ ЗАВЯЗЫВАЙТЕСЬ НА ВНУТРЕННЮЮ РЕАЛИЗАЦИЮ КОМПОНЕНТОВ, ИНАЧЕ ПОТЕРЯЕТЕ ВОЗМОЖНОСТЬ ОБНОВЛЕНИЯ VKUI!`,
       });
     });
 
