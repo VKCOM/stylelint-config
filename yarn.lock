@@ -2782,9 +2782,9 @@ style-search@^0.1.0:
   integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
 
 stylelint-declaration-strict-value@^1.9.0:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/stylelint-declaration-strict-value/-/stylelint-declaration-strict-value-1.9.1.tgz#04e2f0987257d12d98374f129964561ad9ba07fc"
-  integrity sha512-iIkMh2ukIfSTtJoEDgGq5cqUyYWP8NExPk2YSGcePtFikb7KmJoSi0QYajiZRxge/PTbYspci7nIcrtArJlAsw==
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/stylelint-declaration-strict-value/-/stylelint-declaration-strict-value-1.9.2.tgz#f2a884c669974a73f82c9f24b05beb81bc337480"
+  integrity sha512-Z/2yr7g4tq2iGOUWhZLzHL2g2GJYJGcPkfjDh++zI8ukLxW0tcLGJjo64XYCDjja6YcECPDUWbpN+OAoAtAYvw==
   dependencies:
     css-values "^0.1.0"
     shortcss "^0.1.3"
