@@ -1,5 +1,8 @@
 import stylelint, { Rule } from "stylelint";
 
+export const message =
+  "Внутренняя реализация компонентов, включая их классы — не публичное API VKUI и может измениться в любой момент без предупреждения. Не привязывайтесь к ней, если хотите сохранить возможность без проблем обновляться на новые версии библиотеки.";
+
 export const ruleName = "plugin/vkui";
 const messages = stylelint.utils.ruleMessages(ruleName, {});
 const meta = {
@@ -13,7 +16,16 @@ const ruleFunction: Rule = () => {
         ruleName,
         node,
         result,
-        message: `Don't use \`.vkui*\``,
+        message,
+      });
+    });
+
+    root.walkRules(/class[*~^$|]?=['"].*?vkui.*?['"]/, (node) => {
+      stylelint.utils.report({
+        ruleName,
+        node,
+        result,
+        message,
       });
     });
 
@@ -22,7 +34,7 @@ const ruleFunction: Rule = () => {
         ruleName,
         node,
         result,
-        message: `Don't use \`--vkui_internal\``,
+        message,
       });
     });
 
@@ -32,7 +44,7 @@ const ruleFunction: Rule = () => {
           ruleName,
           node,
           result,
-          message: `Don't use \`--vkui_internal\``,
+          message,
         });
       }
     });

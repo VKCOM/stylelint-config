@@ -1,5 +1,5 @@
 import { getTestRule } from "jest-preset-stylelint";
-import { ruleName } from ".";
+import { message, ruleName } from ".";
 
 const testRule = getTestRule();
 
@@ -20,19 +20,52 @@ testRule({
   reject: [
     {
       code: `.vkuiClass{margin: 0 calc(var(--some-var) * -1)}`,
-      message: `Don't use \`.vkui*\``,
+      message,
     },
     {
       code: `.class .vkuiClass{margin: 0 calc(var(--some-var) * -1)}`,
-      message: `Don't use \`.vkui*\``,
+      message,
     },
     {
       code: `.class{margin: 0 calc(var(--vkui_internal)*-1)}`,
-      message: `Don't use \`--vkui_internal\``,
+      message,
     },
     {
       code: `.class{--vkui_internal: 123}`,
-      message: `Don't use \`--vkui_internal\``,
+      message,
+    },
+    // https://drafts.csswg.org/selectors/#attribute-selectors
+    {
+      code: `.class[class="vkuiClass"]) {}`,
+      message,
+    },
+    {
+      code: `.class[class='vkuiClass']) {}`,
+      message,
+    },
+    {
+      code: `.class[class='Abc vkuiClass']) {}`,
+      message,
+    },
+    {
+      code: `.class[class~='vkuiClass']) {}`,
+      message,
+    },
+    {
+      code: `.class[class|='vkuiClass']) {}`,
+      message,
+    },
+    {
+      code: `.class[class^='vkuiClass']) {}`,
+      message,
+    },
+    {
+      code: `.class[class$='vkuiClass']) {}`,
+      message,
+    },
+    {
+      code: `.class[class*='vkuiClass']) {}`,
+      message,
     },
   ],
 });
