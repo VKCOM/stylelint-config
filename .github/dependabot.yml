@@ -9,14 +9,12 @@ updates:
     groups:
       jest:
         patterns:
-          - 'jest'
-          - 'jest-*'
+          - 'jest*'
           - '@types/jest'
           - 'ts-jest'
       stylelint:
         patterns:
-          - 'stylelint'
-          - 'stylelint-*'
+          - 'stylelint*'
     reviewers:
       - "VKCOM/vk-sec"
       - "VKCOM/frontend-core"
