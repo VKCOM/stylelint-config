@@ -9,6 +9,8 @@ module.exports = {
     'indentation': 2,
     'string-quotes': 'single',
     'selector-max-id': 0,
+    'selector-max-type': 0,
+    'selector-max-universal': 0,
     'selector-list-comma-newline-after': 'always',
     'rule-empty-line-before': [
       'always',
