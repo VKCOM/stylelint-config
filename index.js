@@ -12,6 +12,7 @@ module.exports = {
     'selector-max-type': 0,
     'selector-max-universal': 0,
     'selector-list-comma-newline-after': 'always',
+    'selector-pseudo-element-colon-notation': 'double',
     'rule-empty-line-before': [
       'always',
       { ignore: ['after-comment', 'first-nested'] },
