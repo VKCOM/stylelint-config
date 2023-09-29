@@ -4,7 +4,7 @@ import { message, ruleName } from ".";
 const testRule = getTestRule();
 
 testRule({
-  plugins: ["./src/stylelint-vkui"],
+  plugins: ["./src/stylelint-vkui/index.ts"],
   ruleName,
   config: true,
 

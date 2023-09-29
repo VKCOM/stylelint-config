@@ -3,6 +3,7 @@ module.exports = {
     'stylelint-declaration-strict-value',
     './dist/stylelint-selector-bem-pattern',
     './dist/stylelint-vkui',
+    './dist/stylelint-logical-shorthands',
   ],
   rules: {
     'max-nesting-depth': [0, { ignoreAtRules: ['supports'] }],
@@ -55,5 +56,6 @@ module.exports = {
       'ignoreCustomProperties': /.*/,
     },
     'plugin/vkui': true,
+    'plugin/stylelint-logical-shorthands': false,
   },
 };
