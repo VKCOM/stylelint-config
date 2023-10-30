@@ -56,6 +56,6 @@ module.exports = {
       'ignoreCustomProperties': /.*/,
     },
     'plugin/vkui': true,
-    'plugin/stylelint-logical-shorthands': null,
+    'plugin/logical-shorthands': null,
   },
 };
