@@ -40,7 +40,9 @@ module.exports = {
     'no-duplicate-selectors': true,
     'color-named': 'never',
     'function-url-scheme-disallowed-list': ['/^data:/'],
-    'length-zero-no-unit': true,
+    'length-zero-no-unit': [true, {
+      ignore: ['custom-properties'],
+    }],
     'property-disallowed-list': [/^\./, 'letter-spacing'],
     'selector-pseudo-class-disallowed-list': ['root'],
     'declaration-block-semicolon-newline-after': 'always',
