@@ -65,9 +65,9 @@ function fixSimple(node: postcss.Declaration, valueNodes: valueParser.Node[]) {
         " " +
         valueParser.stringify(valueNodes[2]);
       inlineValue =
-        valueParser.stringify(valueNodes[1]) +
+        valueParser.stringify(valueNodes[3]) +
         " " +
-        valueParser.stringify(valueNodes[3]);
+        valueParser.stringify(valueNodes[1]);
       break;
     default:
       return;

@@ -49,7 +49,7 @@ testRule({
     },
     {
       code: `.class{inset: 2px 1em 0 auto;}`,
-      fixed: `.class{inset-block: 2px 0;inset-inline: 1em auto;}`,
+      fixed: `.class{inset-block: 2px 0;inset-inline: auto 1em;}`,
       message: messageReport("inset"),
     },
     {
@@ -64,7 +64,7 @@ testRule({
     },
     {
       code: `.class{margin: 2px 1em 0 auto;}`,
-      fixed: `.class{margin-block: 2px 0;margin-inline: 1em auto;}`,
+      fixed: `.class{margin-block: 2px 0;margin-inline: auto 1em;}`,
       message: messageReport("margin"),
     },
     {
@@ -79,7 +79,7 @@ testRule({
     },
     {
       code: `.class{padding: 2px 1em 0 auto;}`,
-      fixed: `.class{padding-block: 2px 0;padding-inline: 1em auto;}`,
+      fixed: `.class{padding-block: 2px 0;padding-inline: auto 1em;}`,
       message: messageReport("padding"),
     },
 
@@ -113,7 +113,7 @@ testRule({
     },
     {
       code: `.class{border-width: 2px 1em 0 auto;}`,
-      fixed: `.class{border-block-width: 2px 0;border-inline-width: 1em auto;}`,
+      fixed: `.class{border-block-width: 2px 0;border-inline-width: auto 1em;}`,
       message: messageReport("border-width"),
     },
     {
