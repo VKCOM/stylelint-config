@@ -23,7 +23,7 @@
     "jest-preset-stylelint": "^6.0.0",
     "postcss": "^8.4.16",
     "shx": "^0.3.4",
-    "stylelint": "^14.11.0",
+    "stylelint": "^16.0.2",
     "stylelint-declaration-strict-value": "^1.9.0",
     "typescript": "^5.0.2"
   },
@@ -33,7 +33,7 @@
   },
   "peerDependencies": {
     "postcss": "^8.4.16",
-    "stylelint": "^14.11.0",
+    "stylelint": "^16.0.2",
     "stylelint-declaration-strict-value": "^1.9.0"
   }
 }
