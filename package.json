@@ -35,7 +35,7 @@
   },
   "peerDependencies": {
     "postcss": "^8.4.16",
-    "stylelint": "^14.11.0",
-    "stylelint-declaration-strict-value": "^1.9.0"
+    "stylelint": "^15.11.0 || ^16.1.0",
+    "stylelint-declaration-strict-value": "^1.9.2"
   }
 }
