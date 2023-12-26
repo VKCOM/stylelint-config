@@ -1,7 +1,4 @@
-import { getTestRule } from "jest-preset-stylelint";
-import { message, ruleName } from ".";
-
-const testRule = getTestRule();
+import { message, ruleName } from "./index";
 
 testRule({
   plugins: ["./src/stylelint-vkui/index.ts"],

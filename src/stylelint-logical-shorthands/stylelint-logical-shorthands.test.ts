@@ -1,7 +1,4 @@
-import { getTestRule } from "jest-preset-stylelint";
-import { messageReport, ruleName } from ".";
-
-const testRule = getTestRule();
+import { messageReport, ruleName } from "./index";
 
 testRule({
   plugins: ["./src/stylelint-logical-shorthands/index.ts"],
