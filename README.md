@@ -5,13 +5,13 @@
 ## Установка
 
 ```sh
-yarn add -D @vkontakte/stylelint-config stylelint stylelint-declaration-strict-value postcss
+yarn add -D @vkontakte/stylelint-config stylelint postcss
 ```
 
 или
 
 ```sh
-npm install -D @vkontakte/stylelint-config stylelint stylelint-declaration-strict-value postcss
+npm install -D @vkontakte/stylelint-config stylelint postcss
 ```
 
 ## Использование
