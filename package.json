@@ -26,7 +26,6 @@
     "postcss": "^8.4.16",
     "shx": "^0.3.4",
     "stylelint": "^16.1.0",
-    "stylelint-declaration-strict-value": "^1.9.2",
     "typescript": "^5.0.2"
   },
   "dependencies": {
@@ -35,7 +34,6 @@
   },
   "peerDependencies": {
     "postcss": "^8.4.16",
-    "stylelint": "^15.11.0 || ^16.1.0",
-    "stylelint-declaration-strict-value": "^1.9.2"
+    "stylelint": "^15.11.0 || ^16.1.0"
   }
 }
