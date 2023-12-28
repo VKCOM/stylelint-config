@@ -1,6 +1,6 @@
 {
   "name": "@vkontakte/stylelint-config",
-  "version": "4.0.0-beta.4",
+  "version": "4.0.0",
   "description": "stylelint config from VK",
   "main": "index.js",
   "engines": {
