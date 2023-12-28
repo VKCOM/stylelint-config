@@ -4,19 +4,22 @@
 
 ## Установка
 
-`yarn add @vkontakte/stylelint-config` или `npm i @vkontakte/stylelint-config`
+```sh
+yarn add -D @vkontakte/stylelint-config stylelint postcss
+```
 
-Учтите, что помимо основого пакета, вам нужно установить его peerDependencies. Выполните команду
-`npm info "@vkontakte/stylelint-config" peerDependencies`, чтобы увидеть требуемые версии зависимостей.
+или
+
+```sh
+npm install -D @vkontakte/stylelint-config stylelint postcss
+```
 
 ## Использование
 
-В вашем .stylelintrc.json добавьте extends:
-
 ```js
-// .stylelintrc.json
+// на примере, .stylelintrc.js
 
 modules.exports = {
-  "extends": ["@vkontakte/stylelint-config"]
-}
+  extends: ["@vkontakte/stylelint-config"],
+};
 ```
