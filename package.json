@@ -12,7 +12,9 @@
   "scripts": {
     "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" jest --runInBand",
     "clear": "shx rm -rf dist/*",
-    "build": "yarn clear && tsc"
+    "build": "yarn clear && tsc",
+    "lint:prettier": "prettier --check --ignore-unknown .",
+    "fix:prettier": "prettier --write --ignore-unknown ."
   },
   "author": "bumbledos@gmail.com",
   "license": "MIT",
@@ -26,6 +28,7 @@
     "jest": "^29.7.0",
     "jest-preset-stylelint": "^7.0.0",
     "postcss": "^8.4.16",
+    "prettier": "^3.2.5",
     "shx": "^0.3.4",
     "stylelint": "^16.1.0",
     "typescript": "^5.0.2"

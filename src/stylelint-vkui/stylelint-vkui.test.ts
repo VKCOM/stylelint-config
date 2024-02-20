@@ -1,7 +1,7 @@
-import { message, ruleName } from "./index";
+import { message, ruleName } from './index';
 
 testRule({
-  plugins: ["./src/stylelint-vkui/index.ts"],
+  plugins: ['./src/stylelint-vkui/index.ts'],
   ruleName,
   config: true,
 
