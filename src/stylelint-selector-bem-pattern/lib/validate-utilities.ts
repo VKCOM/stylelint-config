@@ -1,10 +1,10 @@
-import { listSequences } from './list-sequences';
-import { shouldIgnoreRule } from './should-ignore-rule';
-import { shouldIgnoreSelector } from './should-ignore-selector';
-import { getSelectors } from './get-selectors';
+import { listSequences } from './list-sequences.js';
+import { shouldIgnoreRule } from './should-ignore-rule.js';
+import { shouldIgnoreSelector } from './should-ignore-selector.js';
+import { getSelectors } from './get-selectors.js';
 import { Rule } from 'postcss';
 import stylelint, { PostcssResult } from 'stylelint';
-import { ruleName } from '../index';
+import { ruleName } from '../index.js';
 
 interface Config {
   rule: Rule;
@@ -22,10 +22,7 @@ export function validateUtilities(config: Config) {
   selectors.forEach(selector => {
     const allSequences = listSequences(selector);
     for (const sequence of allSequences) {
-      if (
-        config.ignorePattern &&
-        shouldIgnoreSelector(sequence, config.ignorePattern)
-      ) {
+      if (config.ignorePattern && shouldIgnoreSelector(sequence, config.ignorePattern)) {
         continue;
       }
 

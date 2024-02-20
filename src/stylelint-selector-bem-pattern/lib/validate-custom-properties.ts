@@ -1,7 +1,7 @@
 import { Rule } from 'postcss';
-import { shouldIgnoreCustomProperty } from './should-ignore-custom-property';
+import { shouldIgnoreCustomProperty } from './should-ignore-custom-property.js';
 import stylelint, { PostcssResult } from 'stylelint';
-import { ruleName } from '../index';
+import { ruleName } from '../index.js';
 
 interface Config {
   rule: Rule;
@@ -16,8 +16,7 @@ export function validateCustomProperties(config: Config) {
 
     if (property.indexOf('--') !== 0) return;
 
-    if (shouldIgnoreCustomProperty(property, declaration, config.ignorePattern))
-      return;
+    if (shouldIgnoreCustomProperty(property, declaration, config.ignorePattern)) return;
 
     if (property.indexOf(`${config.componentName}-`) === 2) return;
 

@@ -1,13 +1,13 @@
 import path from 'path';
 import { AtRule, Root, Rule } from 'postcss';
-import { validateCustomProperties } from './lib/validate-custom-properties';
-import { validateUtilities } from './lib/validate-utilities';
-import { validateSelectors } from './lib/validate-selectors';
-import { BemOptions, generateConfig } from './lib/generate-config';
-import { toRegexp } from './lib/to-regexp';
-import { isImplicitComponent, isImplicitUtilities } from './lib/check-implicit';
+import { validateCustomProperties } from './lib/validate-custom-properties.js';
+import { validateUtilities } from './lib/validate-utilities.js';
+import { validateSelectors } from './lib/validate-selectors.js';
+import { BemOptions, generateConfig } from './lib/generate-config.js';
+import { toRegexp } from './lib/to-regexp.js';
+import { isImplicitComponent, isImplicitUtilities } from './lib/check-implicit.js';
 import stylelint, { PostcssResult } from 'stylelint';
-import { ruleName } from './index';
+import { ruleName } from './index.js';
 
 export { BemOptions };
 
@@ -15,9 +15,7 @@ const DEFINE_VALUE = '([-_a-zA-Z0-9]+)\\s*(?:;\\s*(weak))?';
 const DEFINE_DIRECTIVE = new RegExp(
   `(?:\\*?\\s*@define ${DEFINE_VALUE})|(?:\\s*postcss-bem-linter: define ${DEFINE_VALUE})\\s*`
 );
-const END_DIRECTIVE = new RegExp(
-  '(?:\\*\\s*@end\\s*)|' + '(?:\\s*postcss-bem-linter: end)\\s*'
-);
+const END_DIRECTIVE = new RegExp('(?:\\*\\s*@end\\s*)|' + '(?:\\s*postcss-bem-linter: end)\\s*');
 const UTILITIES_IDENT = 'utilities';
 const WEAK_IDENT = 'weak';
 
@@ -34,7 +32,7 @@ export function process(opts: BemOptions, root: Root, result: PostcssResult) {
     start: number;
     weakMode: boolean;
     end?: number;
-  }
+  };
 
   const ranges = findRanges(root);
 
@@ -59,10 +57,7 @@ export function process(opts: BemOptions, root: Root, result: PostcssResult) {
   function checkRule(rule: Rule, range: FileRange) {
     if (range.defined === UTILITIES_IDENT) {
       if (!patterns.utilitySelectors) {
-        throw new Error(
-          'You tried to `@define utilities` but have not provided ' +
-          'a `utilitySelectors` pattern'
-        );
+        throw new Error('You tried to `@define utilities` but have not provided ' + 'a `utilitySelectors` pattern');
       }
       validateUtilities({
         rule,
@@ -74,10 +69,7 @@ export function process(opts: BemOptions, root: Root, result: PostcssResult) {
     }
 
     if (!patterns.componentSelectors) {
-      throw new Error(
-        'You tried to `@define` a component but have not provided ' +
-        'a `componentSelectors` pattern'
-      );
+      throw new Error('You tried to `@define` a component but have not provided ' + 'a `componentSelectors` pattern');
     }
 
     validateCustomProperties({
@@ -109,17 +101,12 @@ export function process(opts: BemOptions, root: Root, result: PostcssResult) {
           weakMode: false,
         });
       } else if (isImplicitComponent(config.implicitComponents, filename)) {
-        let defined = stripUnderscore(
-          path.basename(filename).split('.')[0]
-        );
+        let defined = stripUnderscore(path.basename(filename).split('.')[0]);
         if (defined === 'index') {
           defined = path.basename(path.join(filename, '..'));
         }
 
-        if (
-          defined !== UTILITIES_IDENT &&
-          !toRegexp(config.componentNamePattern).test(defined)
-        ) {
+        if (defined !== UTILITIES_IDENT && !toRegexp(config.componentNamePattern).test(defined)) {
           stylelint.utils.report({
             ruleName,
             message: `Invalid component name from implicit conversion from filename ${filename}`,
@@ -137,9 +124,7 @@ export function process(opts: BemOptions, root: Root, result: PostcssResult) {
     }
 
     root.walkComments(comment => {
-      const commentStartLine = comment.source
-        ? comment.source?.start?.line
-        : null;
+      const commentStartLine = comment.source ? comment.source?.start?.line : null;
       if (!commentStartLine) return;
 
       if (END_DIRECTIVE.test(comment.text)) {
@@ -150,10 +135,7 @@ export function process(opts: BemOptions, root: Root, result: PostcssResult) {
       const directiveMatch = comment.text.match(DEFINE_DIRECTIVE);
       if (!directiveMatch) return;
       const defined = (directiveMatch[1] || directiveMatch[3]).trim();
-      if (
-        defined !== UTILITIES_IDENT &&
-        !toRegexp(config.componentNamePattern).test(defined)
-      ) {
+      if (defined !== UTILITIES_IDENT && !toRegexp(config.componentNamePattern).test(defined)) {
         stylelint.utils.report({
           ruleName,
           message: `Invalid component name in definition /*${comment}*/`,
