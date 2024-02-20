@@ -1,6 +1,3 @@
-import fs from 'node:fs';
-import process from 'node:process';
-
 export default {
   preset: 'jest-preset-stylelint',
   transform: {

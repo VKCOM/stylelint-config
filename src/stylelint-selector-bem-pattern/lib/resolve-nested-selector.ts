@@ -10,15 +10,17 @@ export function resolveNestedSelector(selector: string, node: Node): string[] {
   if (parent.type === 'root') return [selector];
   if (parent.type !== 'rule' && !parentIsNestAtRule) return resolveNestedSelector(selector, parent);
 
-  const parentSelectors: string[] = (parentIsNestAtRule)
+  const parentSelectors: string[] = parentIsNestAtRule
     ? (parent as any).params.split(',').map((s: string) => s.trim())
     : (parent as any).selectors;
 
   return parentSelectors.reduce<string[]>((result, parentSelector) => {
     if (selector.indexOf('&') !== -1) {
-      const newlyResolvedSelectors = resolveNestedSelector(parentSelector, parent).map(function (resolvedParentSelector) {
-        return selector.replace(/&/g, resolvedParentSelector);
-      });
+      const newlyResolvedSelectors = resolveNestedSelector(parentSelector, parent).map(
+        function (resolvedParentSelector) {
+          return selector.replace(/&/g, resolvedParentSelector);
+        }
+      );
       return result.concat(newlyResolvedSelectors);
     }
 

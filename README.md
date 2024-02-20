@@ -20,6 +20,6 @@ npm install -D @vkontakte/stylelint-config stylelint postcss
 // на примере, .stylelintrc.js
 
 modules.exports = {
-  extends: ["@vkontakte/stylelint-config"],
+  extends: ['@vkontakte/stylelint-config'],
 };
 ```

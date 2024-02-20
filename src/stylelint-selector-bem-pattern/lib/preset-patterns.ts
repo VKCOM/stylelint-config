@@ -21,10 +21,7 @@ export const presetPatterns: Record<string, PresetPattern> = {
 } as const;
 
 function suitSelector(componentName: string, presetOptions: PresetOptions): RegExp {
-  const ns =
-    presetOptions && presetOptions.namespace
-      ? `${presetOptions.namespace}-`
-      : '';
+  const ns = presetOptions && presetOptions.namespace ? `${presetOptions.namespace}-` : '';
   const WORD = '[a-z0-9][a-zA-Z0-9]*';
   const descendant = `(?:-${WORD})?`;
   const modifier = `(?:--${WORD}(?:\\.${ns}${componentName}${descendant}--${WORD})*)?`;
@@ -35,10 +32,7 @@ function suitSelector(componentName: string, presetOptions: PresetOptions): RegE
 }
 
 function bemSelector(block: string, presetOptions: PresetOptions): RegExp {
-  const ns =
-    presetOptions && presetOptions.namespace
-      ? `${presetOptions.namespace}-`
-      : '';
+  const ns = presetOptions && presetOptions.namespace ? `${presetOptions.namespace}-` : '';
   const WORD = '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*';
   const element = `(?:__${WORD})?`;
   const modifier = `(?:(?:_|--)${WORD}){0,2}`;
