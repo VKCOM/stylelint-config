@@ -1,5 +1,5 @@
-import { PresetOptions, presetPatterns } from './preset-patterns';
-import { SelectorPattern } from './validate-selectors';
+import { PresetOptions, presetPatterns } from './preset-patterns.js';
+import { SelectorPattern } from './validate-selectors.js';
 
 export interface BemOptions {
   preset?: 'bem' | 'suit';
@@ -18,13 +18,13 @@ export function generateConfig(primaryOptions: BemOptions) {
 
   const allPatterns = {
     ...patterns,
-    ...({
+    ...{
       utilitySelectors: primaryOptions.utilitySelectors,
       componentName: primaryOptions.componentName,
       componentSelectors: primaryOptions.componentSelectors,
       ignoreSelectors: primaryOptions.ignoreSelectors,
       ignoreCustomProperties: primaryOptions.ignoreCustomProperties,
-    }),
+    },
   };
 
   return {

@@ -1,6 +1,6 @@
 import stylelint, { Rule } from 'stylelint';
-import { process, BemOptions } from './process';
-import { isRegExp } from './lib/utils';
+import { process, BemOptions } from './process.js';
+import { isRegExp } from './lib/utils.js';
 
 function isString(object: any): boolean {
   return typeof object === 'string';
@@ -24,25 +24,37 @@ function isBoolean(object: any): boolean {
 
 const optionsSchema: any = {
   preset: ['suit', 'bem'],
-  presetOptions: function() { return true; },
-  componentName: [isStringOrRegExp],
-  componentSelectors: [(pattern: any) => {
-    if (isStringOrFunction(pattern)) return true;
-    if (!pattern.initial) return false;
-    if (!isStringOrFunction(pattern.initial)) return false;
-    if (pattern.combined && !isStringOrFunction(pattern.combined)) return false;
+  presetOptions: function () {
     return true;
-  }],
-  implicitComponents: [isBoolean, isString, function(pattern: any) {
-    return Array.isArray(pattern) && pattern.every(isString);
-  }],
-  implicitUtilities: [isBoolean, isString, function(pattern: any) {
-    return Array.isArray(pattern) && pattern.every(isString);
-  }],
+  },
+  componentName: [isStringOrRegExp],
+  componentSelectors: [
+    (pattern: any) => {
+      if (isStringOrFunction(pattern)) return true;
+      if (!pattern.initial) return false;
+      if (!isStringOrFunction(pattern.initial)) return false;
+      if (pattern.combined && !isStringOrFunction(pattern.combined)) return false;
+      return true;
+    },
+  ],
+  implicitComponents: [
+    isBoolean,
+    isString,
+    function (pattern: any) {
+      return Array.isArray(pattern) && pattern.every(isString);
+    },
+  ],
+  implicitUtilities: [
+    isBoolean,
+    isString,
+    function (pattern: any) {
+      return Array.isArray(pattern) && pattern.every(isString);
+    },
+  ],
   utilitySelectors: [isStringOrRegExp],
   ignoreSelectors: [
     isStringOrRegExp,
-    function(pattern: any) {
+    function (pattern: any) {
       if (!Array.isArray(pattern)) {
         return isStringOrRegExp(pattern);
       }
@@ -51,7 +63,7 @@ const optionsSchema: any = {
   ],
   ignoreCustomProperties: [
     isStringOrRegExp,
-    function(pattern: any) {
+    function (pattern: any) {
       if (!Array.isArray(pattern)) {
         return isStringOrRegExp(pattern);
       }
@@ -63,16 +75,12 @@ const optionsSchema: any = {
 export const ruleName = 'plugin/selector-bem-pattern';
 const messages = stylelint.utils.ruleMessages(ruleName, {});
 
-const ruleFunction: Rule<BemOptions> = (primaryOption) => {
+const ruleFunction: Rule<BemOptions> = primaryOption => {
   return (root, result) => {
-    const isValid = stylelint.utils.validateOptions(
-      result,
-      ruleName,
-      {
-        actual: primaryOption,
-        possible: optionsSchema,
-      }
-    );
+    const isValid = stylelint.utils.validateOptions(result, ruleName, {
+      actual: primaryOption,
+      possible: optionsSchema,
+    });
 
     if (!isValid) {
       return;
@@ -85,4 +93,4 @@ const ruleFunction: Rule<BemOptions> = (primaryOption) => {
 ruleFunction.ruleName = ruleName;
 ruleFunction.messages = messages;
 
-module.exports = stylelint.createPlugin(ruleName, ruleFunction);
+export default stylelint.createPlugin(ruleName, ruleFunction);

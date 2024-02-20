@@ -1,23 +1,19 @@
-import stylelint, { Rule } from "stylelint";
-import valueParser from "postcss-value-parser";
-import postcss from "postcss";
-import {
-  messageReportBorder,
-  messageReportBorderRadius,
-  messageReportSimple,
-} from "./messageReport";
+import stylelint, { Rule } from 'stylelint';
+import valueParser from 'postcss-value-parser';
+import postcss from 'postcss';
+import { messageReportBorder, messageReportBorderRadius, messageReportSimple } from './messageReport.js';
 
 function ignoreCommentAndSpaceNodes(valueNode: valueParser.Node): boolean {
-  return valueNode.type !== "comment" && valueNode.type !== "space";
+  return valueNode.type !== 'comment' && valueNode.type !== 'space';
 }
 
 /**
  * Собирает сообщение в зависимости от свойства
  */
 export function messageReport(prop: string) {
-  if (prop === "border-radius") {
+  if (prop === 'border-radius') {
     return messageReportBorderRadius(prop);
-  } else if (prop.startsWith("border")) {
+  } else if (prop.startsWith('border')) {
     return messageReportBorder(prop);
   }
 
@@ -33,8 +29,8 @@ export function messageReport(prop: string) {
  * ```
  */
 function logicalProp(prop: string, type: string) {
-  if (prop.startsWith("border")) {
-    return prop.replace("-", `-${type}-`);
+  if (prop.startsWith('border')) {
+    return prop.replace('-', `-${type}-`);
   }
 
   return `${prop}-${type}`;
@@ -44,8 +40,8 @@ function logicalProp(prop: string, type: string) {
  * Превращает свойства из физических в логические
  */
 function fixSimple(node: postcss.Declaration, valueNodes: valueParser.Node[]) {
-  let blockValue = "";
-  let inlineValue = "";
+  let blockValue = '';
+  let inlineValue = '';
 
   switch (valueNodes.length) {
     case 2:
@@ -53,33 +49,24 @@ function fixSimple(node: postcss.Declaration, valueNodes: valueParser.Node[]) {
       inlineValue = valueParser.stringify(valueNodes[1]);
       break;
     case 3:
-      blockValue =
-        valueParser.stringify(valueNodes[0]) +
-        " " +
-        valueParser.stringify(valueNodes[2]);
+      blockValue = valueParser.stringify(valueNodes[0]) + ' ' + valueParser.stringify(valueNodes[2]);
       inlineValue = valueParser.stringify(valueNodes[1]);
       break;
     case 4:
-      blockValue =
-        valueParser.stringify(valueNodes[0]) +
-        " " +
-        valueParser.stringify(valueNodes[2]);
-      inlineValue =
-        valueParser.stringify(valueNodes[3]) +
-        " " +
-        valueParser.stringify(valueNodes[1]);
+      blockValue = valueParser.stringify(valueNodes[0]) + ' ' + valueParser.stringify(valueNodes[2]);
+      inlineValue = valueParser.stringify(valueNodes[3]) + ' ' + valueParser.stringify(valueNodes[1]);
       break;
     default:
       return;
   }
 
   node.after({
-    prop: logicalProp(node.prop, "inline"),
+    prop: logicalProp(node.prop, 'inline'),
     value: inlineValue,
     important: node.important,
   });
   node.after({
-    prop: logicalProp(node.prop, "block"),
+    prop: logicalProp(node.prop, 'block'),
     value: blockValue,
     important: node.important,
   });
@@ -89,49 +76,44 @@ function fixSimple(node: postcss.Declaration, valueNodes: valueParser.Node[]) {
 /**
  * Превращает свойства из физических в логические для border radius
  */
-function fixBorderRadius(
-  node: postcss.Declaration,
-  valueNodes: valueParser.Node[]
-) {
-  let startStartValue = "";
-  let startEndValue = "";
-  let endEndValue = "";
-  let endStartValue = "";
+function fixBorderRadius(node: postcss.Declaration, valueNodes: valueParser.Node[]) {
+  let startStartValue = '';
+  let startEndValue = '';
+  let endEndValue = '';
+  let endStartValue = '';
 
-  let firstStartStartValue = "";
-  let firstStartEndValue = "";
-  let firstEndEndValue = "";
-  let firstEndStartValue = "";
+  let firstStartStartValue = '';
+  let firstStartEndValue = '';
+  let firstEndEndValue = '';
+  let firstEndStartValue = '';
 
-  const indexDiv = valueNodes.findIndex(
-    (valueNode) => valueNode.type === "div"
-  );
+  const indexDiv = valueNodes.findIndex(valueNode => valueNode.type === 'div');
 
   switch (indexDiv) {
     case 1:
-      const v = valueParser.stringify(valueNodes[0]) + " ";
+      const v = valueParser.stringify(valueNodes[0]) + ' ';
       firstStartStartValue = v;
       firstStartEndValue = v;
       firstEndEndValue = v;
       firstEndStartValue = v;
       break;
     case 2:
-      firstStartStartValue = valueParser.stringify(valueNodes[0]) + " ";
-      firstStartEndValue = valueParser.stringify(valueNodes[1]) + " ";
-      firstEndEndValue = valueParser.stringify(valueNodes[0]) + " ";
-      firstEndStartValue = valueParser.stringify(valueNodes[1]) + " ";
+      firstStartStartValue = valueParser.stringify(valueNodes[0]) + ' ';
+      firstStartEndValue = valueParser.stringify(valueNodes[1]) + ' ';
+      firstEndEndValue = valueParser.stringify(valueNodes[0]) + ' ';
+      firstEndStartValue = valueParser.stringify(valueNodes[1]) + ' ';
       break;
     case 3:
-      firstStartStartValue = valueParser.stringify(valueNodes[0]) + " ";
-      firstStartEndValue = valueParser.stringify(valueNodes[1]) + " ";
-      firstEndEndValue = valueParser.stringify(valueNodes[2]) + " ";
-      firstEndStartValue = valueParser.stringify(valueNodes[1]) + " ";
+      firstStartStartValue = valueParser.stringify(valueNodes[0]) + ' ';
+      firstStartEndValue = valueParser.stringify(valueNodes[1]) + ' ';
+      firstEndEndValue = valueParser.stringify(valueNodes[2]) + ' ';
+      firstEndStartValue = valueParser.stringify(valueNodes[1]) + ' ';
       break;
     case 4:
-      firstStartStartValue = valueParser.stringify(valueNodes[0]) + " ";
-      firstStartEndValue = valueParser.stringify(valueNodes[1]) + " ";
-      firstEndEndValue = valueParser.stringify(valueNodes[2]) + " ";
-      firstEndStartValue = valueParser.stringify(valueNodes[3]) + " ";
+      firstStartStartValue = valueParser.stringify(valueNodes[0]) + ' ';
+      firstStartEndValue = valueParser.stringify(valueNodes[1]) + ' ';
+      firstEndEndValue = valueParser.stringify(valueNodes[2]) + ' ';
+      firstEndStartValue = valueParser.stringify(valueNodes[3]) + ' ';
       break;
   }
 
@@ -164,22 +146,22 @@ function fixBorderRadius(
   }
 
   node.after({
-    prop: "border-end-start-radius",
+    prop: 'border-end-start-radius',
     value: firstEndStartValue + endStartValue,
     important: node.important,
   });
   node.after({
-    prop: "border-end-end-radius",
+    prop: 'border-end-end-radius',
     value: firstEndEndValue + endEndValue,
     important: node.important,
   });
   node.after({
-    prop: "border-start-end-radius",
+    prop: 'border-start-end-radius',
     value: firstStartEndValue + startEndValue,
     important: node.important,
   });
   node.after({
-    prop: "border-start-start-radius",
+    prop: 'border-start-start-radius',
     value: firstStartStartValue + startStartValue,
     important: node.important,
   });
@@ -190,7 +172,7 @@ function fixBorderRadius(
  * Превращает свойства из физических в логические
  */
 function fix(node: postcss.Declaration, valueNodes: valueParser.Node[]) {
-  if (node.prop === "border-radius") {
+  if (node.prop === 'border-radius') {
     fixBorderRadius(node, valueNodes);
     return;
   }
@@ -198,17 +180,17 @@ function fix(node: postcss.Declaration, valueNodes: valueParser.Node[]) {
   fixSimple(node, valueNodes);
 }
 
-export const ruleName = "plugin/logical-shorthands";
+export const ruleName = 'plugin/logical-shorthands';
 const messages = stylelint.utils.ruleMessages(ruleName, {});
 const meta = {
-  url: "https://github.com/VKCOM/stylelint-config/tree/master/src/stylelint-logical-shorthands",
+  url: 'https://github.com/VKCOM/stylelint-config/tree/master/src/stylelint-logical-shorthands',
 };
 
 const ruleFunction: Rule = (_, __, context) => {
   return (root, result) => {
     root.walkDecls(
       /^(inset|margin|padding|scroll-padding|scroll-margin|border-(width|style|color)|border-radius)$/,
-      (node) => {
+      node => {
         const parsedValue = valueParser(node.value);
         const valueNodes = parsedValue.nodes.filter(ignoreCommentAndSpaceNodes);
 

@@ -1,5 +1,5 @@
 import { Rule } from 'postcss';
-import { resolveNestedSelector } from './resolve-nested-selector';
+import { resolveNestedSelector } from './resolve-nested-selector.js';
 
 function isNestedRule(node: Rule): boolean {
   return node.parent ? /(?:at)?rule/.test(node.parent.type) : false;
@@ -18,11 +18,8 @@ function hasOnlyAllowedAtRules(node: Rule) {
   let containsNotAllowed = false;
 
   if (hasChildNodes(node)) {
-    node.each((child) => {
-      if (
-        child.type === 'atrule' &&
-        (child.name === 'extend' || child.name === 'media')
-      ) {
+    node.each(child => {
+      if (child.type === 'atrule' && (child.name === 'extend' || child.name === 'media')) {
         containsAllowed = true;
       } else if (child.type !== 'comment') {
         containsNotAllowed = true;

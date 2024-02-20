@@ -1,8 +1,7 @@
-module.exports = {
+export default {
   plugins: ["./dist/stylelint-selector-bem-pattern", "./dist/stylelint-vkui", "./dist/stylelint-logical-shorthands"],
   rules: {
     "max-nesting-depth": [0, { ignoreAtRules: ["supports"] }],
-    indentation: 2,
     "selector-max-id": 0,
     "selector-max-type": 0,
     "selector-max-universal": 0,
