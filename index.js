@@ -1,5 +1,10 @@
 export default {
-  plugins: ['./dist/stylelint-selector-bem-pattern', './dist/stylelint-vkui', './dist/stylelint-logical-shorthands'],
+  plugins: [
+    './dist/stylelint-selector-bem-pattern',
+    './dist/stylelint-vkui',
+    './dist/stylelint-logical-shorthands',
+    './dist/stylelint-css-property-memory',
+  ],
   rules: {
     'max-nesting-depth': [0, { ignoreAtRules: ['supports'] }],
     'selector-max-id': 0,
@@ -36,5 +41,6 @@ export default {
     },
     'plugin/vkui': true,
     'plugin/logical-shorthands': null,
+    'plugin/css-property-memory': true,
   },
 };
