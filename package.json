@@ -29,7 +29,7 @@
     "jest-preset-stylelint": "^7.0.0",
     "postcss": "^8.4.16",
     "prettier": "^3.2.5",
-    "shx": "^0.3.4",
+    "shx": "^0.4.0",
     "stylelint": "^16.1.0",
     "typescript": "^5.0.2"
   },
