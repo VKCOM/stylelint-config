@@ -15,9 +15,6 @@ updates:
       stylelint:
         patterns:
           - 'stylelint*'
-    reviewers:
-      - "VKCOM/vk-sec"
-      - "VKCOM/frontend-core"
 
   - package-ecosystem: "github-actions"
     # Workflow files stored in the
@@ -25,6 +22,3 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "VKCOM/vk-sec"
-      - "VKCOM/frontend-core"
