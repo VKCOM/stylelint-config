@@ -1,6 +1,9 @@
 {
   "name": "@vkontakte/stylelint-config",
   "version": "4.1.0",
+  "bugs": {
+    "url": "https://github.com/VKCOM/stylelint-config/issues"
+  },
   "description": "stylelint config from VK",
   "homepage": "https://github.com/VKCOM/stylelint-config#readme",
   "repository": {
