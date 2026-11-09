@@ -14,8 +14,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Enable Corepack
+        run: |
+          npm install --global corepack
+          corepack enable
+
+      - uses: actions/cache@v4
+        with:
+          path: .yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install --immutable --mode=skip-build
 
       - name: Run build
         run: yarn build

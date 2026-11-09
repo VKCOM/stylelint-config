@@ -1,5 +1,13 @@
 Все изменения делаем в отдельной ветке.
 
+Используем Yarn 4 через Corepack (версия закреплена в `package.json`):
+
+```sh
+npm install --global corepack
+corepack enable
+yarn install --immutable
+```
+
 1. Вносим и коммитим изменения.
 2. Создаем MR в master.
 3. После принятия MR запускам GitHub Actions -> Publish, указав новую версию. Мы следуем принципам semver.
