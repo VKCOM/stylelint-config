@@ -184,9 +184,10 @@ export const ruleName = 'plugin/logical-shorthands';
 const messages = stylelint.utils.ruleMessages(ruleName, {});
 const meta = {
   url: 'https://github.com/VKCOM/stylelint-config/tree/master/src/stylelint-logical-shorthands',
+  fixable: true,
 };
 
-const ruleFunction: Rule = (_, __, context) => {
+const ruleFunction: Rule = () => {
   return (root, result) => {
     root.walkDecls(
       /^(inset|margin|padding|scroll-padding|scroll-margin|border-(width|style|color)|border-radius)$/,
@@ -198,12 +199,6 @@ const ruleFunction: Rule = (_, __, context) => {
           return;
         }
 
-        if (context.fix) {
-          fix(node, valueNodes);
-
-          return;
-        }
-
         const message = messageReport(node.prop);
 
         stylelint.utils.report({
@@ -211,6 +206,7 @@ const ruleFunction: Rule = (_, __, context) => {
           node,
           result,
           message,
+          fix: () => fix(node, valueNodes),
         });
       }
     );
