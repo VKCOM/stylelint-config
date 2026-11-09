@@ -1,4 +1,6 @@
-import { message, ruleName } from './index';
+import { message as ruleMessage, ruleName } from './index';
+
+const message = `${ruleMessage} (${ruleName})`;
 
 testRule({
   plugins: ['./src/stylelint-css-property-memory/index.ts'],

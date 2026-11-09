@@ -1,9 +1,9 @@
 export default {
   plugins: [
-    './dist/stylelint-selector-bem-pattern',
-    './dist/stylelint-vkui',
-    './dist/stylelint-logical-shorthands',
-    './dist/stylelint-css-property-memory',
+    './dist/stylelint-selector-bem-pattern/index.js',
+    './dist/stylelint-vkui/index.js',
+    './dist/stylelint-logical-shorthands/index.js',
+    './dist/stylelint-css-property-memory/index.js',
   ],
   rules: {
     'max-nesting-depth': [0, { ignoreAtRules: ['supports'] }],
@@ -13,7 +13,6 @@ export default {
     'selector-pseudo-element-colon-notation': 'double',
     'rule-empty-line-before': ['always', { ignore: ['after-comment', 'first-nested'] }],
     'comment-empty-line-before': ['always', { ignore: ['stylelint-commands'], except: ['first-nested'] }],
-    'declaration-block-single-line-max-declarations': 1,
     'declaration-property-value-disallowed-list': {
       '/^border/': ['none'],
       '/^(@|--).+/': ['/^#/', '/^rgb/'],

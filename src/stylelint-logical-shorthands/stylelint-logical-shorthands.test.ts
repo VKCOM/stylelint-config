@@ -1,4 +1,6 @@
-import { messageReport, ruleName } from './index.js';
+import { messageReport as getMessageReport, ruleName } from './index.js';
+
+const messageReport = (prop: string) => `${getMessageReport(prop)} (${ruleName})`;
 
 testRule({
   plugins: ['./src/stylelint-logical-shorthands/index.ts'],
