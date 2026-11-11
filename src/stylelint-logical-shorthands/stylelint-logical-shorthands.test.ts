@@ -1,9 +1,10 @@
-import { messageReport as getMessageReport, ruleName } from './index.js';
+import { testRule } from 'stylelint-test-rule-node';
+import plugin, { messageReport as getMessageReport, ruleName } from '../../dist/stylelint-logical-shorthands/index.js';
 
 const messageReport = (prop: string) => `${getMessageReport(prop)} (${ruleName})`;
 
 testRule({
-  plugins: ['./src/stylelint-logical-shorthands/index.ts'],
+  plugins: [plugin],
   ruleName,
   config: true,
   fix: true,

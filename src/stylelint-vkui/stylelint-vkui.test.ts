@@ -1,9 +1,10 @@
-import { message as ruleMessage, ruleName } from './index';
+import { testRule } from 'stylelint-test-rule-node';
+import plugin, { message as ruleMessage, ruleName } from '../../dist/stylelint-vkui/index.js';
 
 const message = `${ruleMessage} (${ruleName})`;
 
 testRule({
-  plugins: ['./src/stylelint-vkui/index.ts'],
+  plugins: [plugin],
   ruleName,
   config: true,
 
