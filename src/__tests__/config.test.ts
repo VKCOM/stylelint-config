@@ -1,4 +1,6 @@
+import assert from 'node:assert/strict';
 import path from 'node:path';
+import { test } from 'node:test';
 import stylelint from 'stylelint';
 
 const configFile = path.resolve('index.js');
@@ -9,8 +11,8 @@ test('loads the built config and its plugins', async () => {
     configFile,
   });
 
-  expect(result.errored).toBe(false);
-  expect(result.results[0].warnings).toEqual([]);
+  assert.equal(result.errored, false);
+  assert.deepEqual(result.results[0].warnings, []);
 });
 
 test('fixes logical shorthands with the built plugin', async () => {
@@ -20,9 +22,9 @@ test('fixes logical shorthands with the built plugin', async () => {
     fix: true,
   });
 
-  expect(result.errored).toBe(false);
-  expect(result.code).toBe('.Component { padding-block: 1px; padding-inline: 2px; }');
-  expect(result.results[0].warnings).toEqual([]);
+  assert.equal(result.errored, false);
+  assert.equal(result.code, '.Component { padding-block: 1px; padding-inline: 2px; }');
+  assert.deepEqual(result.results[0].warnings, []);
 });
 
 test('preserves logical shorthands disabled by a configuration comment', async () => {
@@ -33,7 +35,7 @@ test('preserves logical shorthands disabled by a configuration comment', async (
     fix: true,
   });
 
-  expect(result.errored).toBe(false);
-  expect(result.code).toBe(code);
-  expect(result.results[0].warnings).toEqual([]);
+  assert.equal(result.errored, false);
+  assert.equal(result.code, code);
+  assert.deepEqual(result.results[0].warnings, []);
 });
