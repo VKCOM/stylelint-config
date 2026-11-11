@@ -1,4 +1,6 @@
 .gitignore
 yarn.lock
+.yarn/
+.yarnrc.yml
 .idea/
 .DS_Store

@@ -10,19 +10,16 @@
     "type": "git",
     "url": "https://github.com/VKCOM/stylelint-config.git"
   },
-  "bugs": {
-    "url": "https://github.com/VKCOM/stylelint-config/issues"
-  },
   "type": "module",
   "main": "index.js",
   "exports": "./index.js",
   "engines": {
     "node": ">=20",
-    "yarn": "^1.21.1"
+    "yarn": "^4.0.0"
   },
   "scripts": {
     "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" jest --runInBand",
-    "clear": "shx rm -rf dist/*",
+    "clear": "shx rm -rf dist",
     "build": "yarn clear && tsc",
     "lint:prettier": "prettier --check --ignore-unknown .",
     "fix:prettier": "prettier --write --ignore-unknown ."
@@ -51,5 +48,6 @@
   "peerDependencies": {
     "postcss": "^8.4.16",
     "stylelint": "^16.8.2 || ^17.0.0 || ^18.0.0"
-  }
+  },
+  "packageManager": "yarn@4.18.1+sha512.b2e1e7524f654f2749d32b4ebcb4622473cb5bcbc485df2007e12a154e50162a4d795526768bc5f5b8f81717bfd79deb2472813d86fb5ae2eb551fa9c872b08f"
 }

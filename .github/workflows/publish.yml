@@ -10,6 +10,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,11 +21,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
-          always-auth: true
           registry-url: 'https://registry.npmjs.org'
 
-      - run: yarn install --frozen-lockfile
+      - name: Enable Corepack
+        run: |
+          npm install --global corepack
+          corepack enable
+
+      - uses: actions/cache@v4
+        with:
+          path: .yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+
+      - name: Install npm with OIDC support
+        run: npm install --global npm@11
+
+      - run: yarn install --immutable
 
       - run: yarn build
 
@@ -31,7 +45,14 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Action"
 
-      - run: yarn version --new-version ${{ github.event.inputs.version }} --no-commit-hooks
+      - name: Set release version
+        run: |
+          yarn version "$RELEASE_VERSION"
+          git add package.json yarn.lock
+          git -c core.hooksPath=/dev/null commit -m "v$RELEASE_VERSION"
+          git -c core.hooksPath=/dev/null tag -am "v$RELEASE_VERSION" "v$RELEASE_VERSION"
+        env:
+          RELEASE_VERSION: ${{ github.event.inputs.version }}
 
       - name: Pushing changes
         uses: ad-m/github-push-action@master
@@ -39,7 +60,5 @@ jobs:
           github_token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      - name: Publushing release
-        run: yarn publish --non-interactive
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+      - name: Publish release
+        run: npm publish --access public
