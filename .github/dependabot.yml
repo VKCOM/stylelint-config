@@ -7,11 +7,6 @@ updates:
     allow:
       - dependency-type: "direct"
     groups:
-      jest:
-        patterns:
-          - 'jest*'
-          - '@types/jest'
-          - 'ts-jest'
       stylelint:
         patterns:
           - 'stylelint*'
